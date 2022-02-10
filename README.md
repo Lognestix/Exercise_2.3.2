@@ -1,42 +1,23 @@
-# В pom.xml добавлена поддержка spotbugs-maven-plugin
-
-```xml
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>3.1.12.2</version>
-            </plugin>
-        </plugins>
-    </build>
-```
-
-# Код Java находящийся в этом репозитории
-
-```Java
-public class Main {
-  public static void main(String[] args) {
-    BonusService service = new BonusService();
-
-    long amount = 1000_60;
-    boolean registered = true;
-
-    long calculate = service.calculate(amount, registered);
-    System.out.println(calculate);
-  }
-}
-```
-```Java
-public class BonusService {
-  public long calculate(long amount, boolean registered) {
-    int percent = registered ? 3 : 1;
-    long bonus = amount * percent / 100 / 100;
-    long limit = 500;
-    if (bonus > limit) {
-      bonus = limit;
-    }
-    return bonus;
-  }
-}
-```
+# Система сборки Maven, управление зависимостями, автотесты на JUnit5 (Exercise_2.3.2)
+## Домашнее задание по курсу "Java для тестировщиков"
+## Тема: «2.3. Система сборки Maven, управление зависимостями, автотесты на JUnit5», задание №2: «Читаем логи»
+- Создано issue с описанием того, что не так, с приложенным куском лога, из которого это видно;
+- Выполнены правки с сообщением коммита fixed #1  
+где 1 - это id issue
+### Предварительные требования
+- На компьютере пользователя должна быть установлена:
+	- Intellij IDEA
+### Установка и запуск
+1. Склонировать проект на свой компьютер
+	- открыть терминал
+	- ввести команду 
+		```
+		git clone https://github.com/Lognestix/Exercise_2.3.2
+		```
+1. Открыть склонированный проект в Intellij IDEA
+1. Запустить проверку:
+	- Нажать два раза CTRL;
+	- Ввести команду 
+		```
+		mvn clean compile spotbugs:check
+		```
